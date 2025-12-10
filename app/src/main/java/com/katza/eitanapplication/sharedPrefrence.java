@@ -45,6 +45,7 @@ public class sharedPrefrence extends AppCompatActivity implements View
     Dialog d;
     EditText eUsername , etPass;
     Button btnCustomLogin , btnLogin;
+    int f;
     private void initViews() {
         btnSave = (Button)findViewById(R.id.btnSubmit);
         btnSave.setOnClickListener(this);

@@ -37,7 +37,6 @@ public class sharedPrefrence extends AppCompatActivity implements View.OnClickLi
         }
         btnLogin = (Button) findViewById(R.id.btnDialogLogin);
         btnLogin.setOnClickListener(this);
-        sp = getSharedPreferences("details1" , 0);
     }
     SharedPreferences sp;
     Button btnSave;

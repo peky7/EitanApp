@@ -1,6 +1,10 @@
 package com.katza.eitanapplication;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });*/
         switch1 = findViewById(R.id.switch1);
         imageView = findViewById(R.id.imageView);
+        registerForContextMenu(imageView);
         seekBar = findViewById(R.id.seekBar);
         //imageView.setVisibility(View.GONE);
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -109,5 +114,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this , "Error" , Toast.LENGTH_SHORT).show();
         }
     }*/
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected (MenuItem item) {
+        super.onOptionsItemSelected(item);
+        int id = item.getItemId();
+        if (id == R.id.action_login) {
+            Toast.makeText(this , "You selected login" , Toast.LENGTH_SHORT).show();
+        }
+        else if (id == R.id.action_register) {
+            Toast.makeText(this , "You selected register" , Toast.LENGTH_SHORT).show();
+        }
+        else if (R.id.action_exit == id) {
+            Toast.makeText(this , "You selected exit" , Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu , View v , ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu , v , menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.firstline) {
+            Toast.makeText(this, "קוראים לי לוקאץ", Toast.LENGTH_LONG).show();
+            return true;
+
+        } else if (item.getItemId() == R.id.secondline) {
+            Toast.makeText(this, "קוראים לי רון לוי", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        return false;
+    }
+
 
 }
